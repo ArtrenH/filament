@@ -136,20 +136,6 @@
         </x-filament::dropdown.list>
     @endif
 
-    @if ($canSwitchTenants)
-        <x-filament::dropdown.list>
-            @foreach ($tenants as $tenant)
-                <x-filament::dropdown.list.item
-                    :href="filament()->getUrl($tenant)"
-                    :image="filament()->getTenantAvatarUrl($tenant)"
-                    tag="a"
-                >
-                    {{ filament()->getTenantName($tenant) }}
-                </x-filament::dropdown.list.item>
-            @endforeach
-        </x-filament::dropdown.list>
-    @endif
-
     @if ($hasRegistrationItem)
         <x-filament::dropdown.list>
             <x-filament::dropdown.list.item
@@ -161,6 +147,20 @@
             >
                 {{ $registrationItem?->getLabel() ?? filament()->getTenantRegistrationPage()::getLabel() }}
             </x-filament::dropdown.list.item>
+        </x-filament::dropdown.list>
+    @endif
+
+    @if ($canSwitchTenants)
+        <x-filament::dropdown.list>
+            @foreach ($tenants as $tenant)
+                <x-filament::dropdown.list.item
+                    :href="filament()->getUrl($tenant)"
+                    :image="filament()->getTenantAvatarUrl($tenant)"
+                    tag="a"
+                >
+                    {{ filament()->getTenantName($tenant) }}
+                </x-filament::dropdown.list.item>
+            @endforeach
         </x-filament::dropdown.list>
     @endif
 </x-filament::dropdown>
